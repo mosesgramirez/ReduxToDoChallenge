@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // Task:  Import functions from ActionCreators
-import { addTodo, toggleToDo, clearAllTasks, deleteAllTasks } from './redux/ActionCreators';
+import { addTodo, toggleToDo, clearAllTasks, deleteCompletedTask, deleteAllTasks } from './redux/ActionCreators';
 
 // Task: Assign reducer to prop
 const mapStateToProps = (state) => {
@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   addTodo, 
   toggleToDo, 
-  clearAllTasks, 
+  clearAllTasks,
+  deleteCompletedTask, 
   deleteAllTasks
 }
 
@@ -68,6 +69,9 @@ class Main extends Component {
               <button onClick={() => this.handleSubmit()}>Add To Redux</button>
               <button onClick={() => this.props.clearAllTasks()}>
                 Clear Complete
+              </button>
+              <button onClick={() => this.props.deleteCompletedTask()}>
+                Clear Task
               </button>
               <button onClick={() => this.props.deleteAllTasks()}>
                 Clear List

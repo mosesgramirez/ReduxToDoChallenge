@@ -1,10 +1,7 @@
-import * as ActionTypes from './ActionTypes';
+import * as ActionTypes from './ActionTypes'
 
 const initialState = {
-  todo: [
-    { activity: 'First ToDo', complete: false },
-    { activity: 'Second ToDo', complete: true },
-  ],
+  todo: []
 }
 
 export const ToDo = (state = initialState, action) => {
@@ -19,10 +16,15 @@ export const ToDo = (state = initialState, action) => {
       updatedTodo[action.payload].complete = !updatedTodo[action.payload].complete
       return { ...state, todo: updatedTodo }
     case ActionTypes.CLEAR_TASKS:
-      return { ...state, todo: state.todo.map((task) => ({ ...task, complete: false })) }
+      return { ...state, todo: state.todo.map(task => ({ ...task, complete: false })) }
+      // Delete individual task
+    // case ActionTypes.ERASE_COMPLETED:
+    //   let completedTodo = [...state.todo]
+    //   completedTodo.filter(task => (task !== completedTodo[action.payload].complete))
+    //   return { ...state, todo: completedTodo }
     case ActionTypes.DELETE_TASKS:
       // TASK implement the final action type
-      return {}
+      return { ...state, todo: [] }
     default:
       return state
   }
